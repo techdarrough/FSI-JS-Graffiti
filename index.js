@@ -1,76 +1,138 @@
-//counter cars
+
+// table vote count elements:
+let dogVote0tableCell = document.querySelector('.dog-vote-0');
+let dogVote1tableCell = document.querySelector('.dog-vote-1');
+let dogVote2tableCell = document.querySelector('.dog-vote-2');
 
 
 
+// count variables 
+
+if(localStorage.getItem('dogVote0') === null){
+    var dogVote0 = 0;
+} else {
+    var dogVote0 = parseInt(localStorage.getItem('dogVote0'));
+    dogVote0tableCell.textContent = dogVote0;
+}
+
+if(localStorage.getItem('dogVote1') === null){
+    var dogVote1 = 0;
+} else {
+    var dogVote1 = parseInt(localStorage.getItem('dogVote1'));
+    dogVote1tableCell.textContent = dogVote1;
+}
+
+if(localStorage.getItem('dogVote2') === null){
+    var dogVote2 = 0;
+} else {
+    var dogVote0 = parseInt(localStorage.getItem('dogVote2'));
+    dogVote2tableCell.textContent = dogVote2;
+}
 
 
-let dogVoteCount0 = 0; //pip
-let dogVoteCount1 = 0; // tess
-let dogVoteCount2 = 0; //rizzop
-// selectors
-let header = document.querySelector('#page-header');
+
+// dog div:
+let dogContainers = document.querySelectorAll('.column');
 let dogDescriptions = document.querySelectorAll('.dog-description');
-let dogNames = document.querySelectorAll('.dog-name');
-let dogImages = document.querySelectorAll('.dog-image');
-let columns = document.querySelectorAll('.column');
-let dogButton0 = document.querySelector('#dogs-name-0')
-let dogColumn0 = document.querySelector('#dog-table-0')
-header.style.textAlign = "left";
 
-if(dogVoteCount0 === null){
-
-    let dogVoteCount0 = 0
-
-};
-
-localStorage.getItem(parseInt('dogVoteCount0'));
-
-for (let i = 0; i < dogNames.length; i++) {
-    if (i % 2 === 0) {
-
-        dogNames[i].style.color = 'red';
-    } else {
-        dogNames[i].style.color = 'green';
-    }
-    dogNames[i].style.textAlign = "left";
-}
-
-
-
-for (let i = 0; i < dogImages.length; i++) {
-    dogImages[i].style.borderRadius = '50px'
-}
-
-
-for (let i = 0; i < dogDescriptions.length; i++) {
+// removing description <p>
+for(let i = 0; i < dogDescriptions.length; i++){
     dogDescriptions[i].remove()
 }
-// add button to every column 
 
-for (let i = 0; i < columns.length; i++) {
-    let buttons = document.createElement('button');
-    
 
-    buttons.textContent = 'vote';
-    let idName = 'dogs-name-' + i
-    buttons.setAttribute('id', idName)
-    buttons.addEventListener('click', function () { })
-    columns[i].append(buttons)
+// created a button to append to my dog divs:
+for(let i = 0; i < dogContainers.length; i++){
+    let button = document.createElement('button');
 
+    //set class names for button
+    let className = 'dog-button-' + String(i)
+    button.setAttribute('class', className);
+
+    // add text to button
+    button.textContent = 'Vote!';
+
+    // style my buttons:
+    button.style.backgroundColor = 'red';
+    button.style.color = 'yellow';
+    button.style.fontSize = '20px'
+
+    dogContainers[i].append(button);
 }
-// button IDs:
 
-//dogs-name-0 pip
+// button one count code
+let buttonOne = document.querySelector('.dog-button-0');
+// console.log(buttonOne);
 
-dogButton0.addEventListener('click', function (){
+buttonOne.addEventListener('click', function(){
+    // update dog counter and append value to table cell:
+    dogVote0 = dogVote0 + 1
+    dogVote0tableCell.textContent = dogVote0;
 
-    dogVoteCount0 = dogVoteCount0 + 1
-    console.log(dogVoteCount0)
-    dogColumn0.textContent = dogVoteCount0;
-    //store in local storage
-    localStorage.setItem('dogVoteCount0', dogVoteCount0)
-});
-//dogs-name-1 tess
+    // store counter value in localstorage
+    localStorage.setItem('dogVote0', dogVote0);
 
-//dogs-name-0 rizzo
+
+})
+
+// button two  count code 
+
+let buttonTwo = document.querySelector('.dog-button-1');
+console.log(buttonTwo);
+
+buttonTwo.addEventListener('click', function(){
+    // update dog counter and append value to table cell:
+    dogVote1 = dogVote1 + 1
+    dogVote1tableCell.textContent = dogVote1;
+
+    // store counter value in localstorage
+    localStorage.setItem('dogVote1', dogVote1);
+
+
+})
+
+// button three count code
+let buttonThree = document.querySelector('.dog-button-2');
+// console.log(buttonOne);
+
+buttonThree.addEventListener('click', function(){
+    // update dog counter and append value to table cell:
+    dogVote2 = dogVote2 + 1
+    dogVote2tableCell.textContent = dogVote2;
+
+    // store counter value in localstorage
+    localStorage.setItem('dogVote2', dogVote2);
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
